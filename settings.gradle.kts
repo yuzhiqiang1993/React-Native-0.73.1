@@ -6,11 +6,11 @@
  */
 
 pluginManagement {
-  repositories {
-    mavenCentral()
-    google()
-    gradlePluginPortal()
-  }
+    repositories {
+        mavenCentral()
+        google()
+        gradlePluginPortal()
+    }
 }
 
 include(
@@ -18,25 +18,26 @@ include(
     ":packages:react-native:ReactAndroid:flipper-integration",
     ":packages:react-native:ReactAndroid:hermes-engine",
     ":packages:react-native:ReactAndroid:external-artifacts",
-    ":packages:rn-tester:android:app")
+    ":packages:rn-tester:android:app"
+)
 
 includeBuild("packages/react-native-gradle-plugin/")
 
 dependencyResolutionManagement {
-  versionCatalogs {
-    create("libs") { from(files("packages/react-native/gradle/libs.versions.toml")) }
-  }
+    versionCatalogs {
+        create("libs") { from(files("packages/react-native/gradle/libs.versions.toml")) }
+    }
 }
 
 rootProject.name = "react-native-github"
 
 plugins {
-  id("com.gradle.enterprise").version("3.7.1")
-  id("org.gradle.toolchains.foojay-resolver-convention").version("0.5.0")
+    id("com.gradle.enterprise").version("3.7.1")
+    id("org.gradle.toolchains.foojay-resolver-convention").version("0.5.0")
 }
 
 // If you specify a file inside gradle/gradle-enterprise.gradle.kts
 // you can configure your custom Gradle Enterprise instance
 if (File("./gradle/gradle-enterprise.gradle.kts").exists()) {
-  apply(from = "./gradle/gradle-enterprise.gradle.kts")
+    apply(from = "./gradle/gradle-enterprise.gradle.kts")
 }

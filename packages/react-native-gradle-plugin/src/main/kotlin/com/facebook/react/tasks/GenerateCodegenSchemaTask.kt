@@ -22,53 +22,70 @@ import org.gradle.api.tasks.*
  */
 abstract class GenerateCodegenSchemaTask : Exec() {
 
-  @get:Internal abstract val jsRootDir: DirectoryProperty
+    @get:Internal
+    abstract val jsRootDir: DirectoryProperty
 
-  @get:Internal abstract val codegenDir: DirectoryProperty
+    @get:Internal
+    abstract val codegenDir: DirectoryProperty
 
-  @get:Internal abstract val generatedSrcDir: DirectoryProperty
+    @get:Internal
+    abstract val generatedSrcDir: DirectoryProperty
 
-  @get:Input abstract val nodeExecutableAndArgs: ListProperty<String>
+    @get:Input
+    abstract val nodeExecutableAndArgs: ListProperty<String>
 
-  @get:InputFiles
-  val jsInputFiles =
-      project.fileTree(jsRootDir) {
-        it.include("**/*.js")
-        it.include("**/*.ts")
-        // We want to exclude the build directory, to don't pick them up for execution avoidance.
-        it.exclude("**/build/**/*")
-      }
+    @get:InputFiles
+    val jsInputFiles =
+        project.fileTree(jsRootDir) {
+            it.include("**/*.js")
+            it.include("**/*.ts")
+            // We want to exclude the build directory, to don't pick them up for execution avoidance.
+            it.exclude("**/build/**/*")
+        }
 
-  @get:OutputFile
-  val generatedSchemaFile: Provider<RegularFile> = generatedSrcDir.file("schema.json")
+    @get:OutputFile
+    val generatedSchemaFile: Provider<RegularFile> = generatedSrcDir.file("schema.json")
 
-  override fun exec() {
-    wipeOutputDir()
-    setupCommandLine()
-    super.exec()
-  }
-
-  internal fun wipeOutputDir() {
-    generatedSrcDir.asFile.get().apply {
-      deleteRecursively()
-      mkdirs()
+    override fun exec() {
+        wipeOutputDir()
+        setupCommandLine()
+        super.exec()
     }
-  }
 
-  internal fun setupCommandLine() {
-    val workingDir = project.projectDir
-    commandLine(
-        windowsAwareCommandLine(
-            *nodeExecutableAndArgs.get().toTypedArray(),
-            codegenDir
-                .file("lib/cli/combine/combine-js-to-schema-cli.js")
-                .get()
-                .asFile
-                .cliPath(workingDir),
-            "--platform",
-            "android",
-            generatedSchemaFile.get().asFile.cliPath(workingDir),
-            jsRootDir.asFile.get().cliPath(workingDir),
-        ))
-  }
+    internal fun wipeOutputDir() {
+        generatedSrcDir.asFile.get().apply {
+            deleteRecursively()
+            mkdirs()
+        }
+    }
+
+    internal fun setupCommandLine() {
+        println("Package GenerateCodegenSchemaTask: setupCommandLine()")
+        val workingDir = project.projectDir
+        println("Package setupCommandLine workingDir: $workingDir")
+
+        /*/Users/yuzhiqiang/workspace/RN/personal/react-native-0.73.1/node_modules/@react-native/codegen*/
+        val rootDir = project.rootDir
+        println("Package setupCommandLine rootDir: $rootDir")
+
+        println("Package setupCommandLine codegenDir: ${codegenDir.get()}")
+
+
+        val cliPath = codegenDir
+            .file("lib/cli/combine/combine-js-to-schema-cli.js")
+            .get()
+            .asFile
+            .cliPath(workingDir)
+        println("Package setupCommandLine cliPath: $cliPath")
+        commandLine(
+            windowsAwareCommandLine(
+                *nodeExecutableAndArgs.get().toTypedArray(),
+                cliPath,
+                "--platform",
+                "android",
+                generatedSchemaFile.get().asFile.cliPath(workingDir),
+                jsRootDir.asFile.get().cliPath(workingDir),
+            )
+        )
+    }
 }

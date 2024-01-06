@@ -12,11 +12,11 @@
 // More on this here: https://reactnative.dev/contributing/how-to-build-from-source
 
 pluginManagement {
-  repositories {
-    mavenCentral()
-    google()
-    gradlePluginPortal()
-  }
+    repositories {
+        mavenCentral()
+        google()
+        gradlePluginPortal()
+    }
 }
 
 rootProject.name = "react-native-build-from-source"
@@ -34,3 +34,5 @@ include(":packages:react-native:ReactAndroid:flipper-integration")
 
 project(":packages:react-native:ReactAndroid:flipper-integration").projectDir =
     file("ReactAndroid/flipper-integration/")
+//ReactAndroid中使用了react-native-gradle-plugin
+includeBuild("../react-native-gradle-plugin/")

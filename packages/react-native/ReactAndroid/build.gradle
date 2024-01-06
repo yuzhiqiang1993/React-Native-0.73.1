@@ -77,180 +77,180 @@ final def preparePrefab = tasks.register("preparePrefab", PreparePrefabHeadersTa
     // libraries have been moved. We keep it here for now as it make easier to
     // migrate one library at a time.
     it.input.set(
-        [
-            new PrefabPreprocessingEntry(
-                "react_render_debug",
-                new Pair("../ReactCommon/react/renderer/debug/", "react/renderer/debug/")
-            ),
-            new PrefabPreprocessingEntry(
-                "turbomodulejsijni",
-                new Pair("src/main/jni/react/turbomodule", "")
-            ),
-            new PrefabPreprocessingEntry(
-                "runtimeexecutor",
-                new Pair("../ReactCommon/runtimeexecutor/", "")
-            ),
-            new PrefabPreprocessingEntry(
-                "react_codegen_rncore",
-                new Pair(new File(buildDir, "generated/source/codegen/jni/").absolutePath, "")
-            ),
-            new PrefabPreprocessingEntry(
-                "react_debug",
-                new Pair("../ReactCommon/react/debug/", "react/debug/")
-            ),
-            new PrefabPreprocessingEntry(
-                "react_render_componentregistry",
-                new Pair("../ReactCommon/react/renderer/componentregistry/", "react/renderer/componentregistry/")
-            ),
-            new PrefabPreprocessingEntry(
-                "react_newarchdefaults",
-                new Pair("src/main/jni/react/newarchdefaults", "")
-            ),
-            new PrefabPreprocessingEntry(
-                "react_render_animations",
-                new Pair("../ReactCommon/react/renderer/animations/", "react/renderer/animations/")
-            ),
-            new PrefabPreprocessingEntry(
-                "react_render_core",
-                new Pair("../ReactCommon/react/renderer/core/", "react/renderer/core/")
-            ),
-            new PrefabPreprocessingEntry(
-                "react_render_graphics",
-                [
-                    new Pair("../ReactCommon/react/renderer/graphics/", "react/renderer/graphics/"),
-                    new Pair("../ReactCommon/react/renderer/graphics/platform/android/", ""),
-                ]
-            ),
-            new PrefabPreprocessingEntry(
-                "rrc_root",
-                new Pair("../ReactCommon/react/renderer/components/root/", "react/renderer/components/root/")
-            ),
-            new PrefabPreprocessingEntry(
-                "rrc_view",
-                [
-                    new Pair("../ReactCommon/react/renderer/components/view/", "react/renderer/components/view/"),
-                    new Pair("../ReactCommon/react/renderer/components/view/platform/android/", ""),
-                ]
-            ),
-            new PrefabPreprocessingEntry(
-                "rrc_legacyviewmanagerinterop",
-                new Pair("../ReactCommon/react/renderer/components/legacyviewmanagerinterop/", "react/renderer/components/legacyviewmanagerinterop/")
-            ),
-            new PrefabPreprocessingEntry(
-                "jsi",
-                new Pair("../ReactCommon/jsi/", "")
-            ),
-            new PrefabPreprocessingEntry(
-                "glog",
-                new Pair(new File(buildDir, "third-party-ndk/glog/exported/").absolutePath, "")
-            ),
-            new PrefabPreprocessingEntry(
-                "fabricjni",
-                new Pair("src/main/jni/react/fabric", "react/fabric/")
-            ),
-            new PrefabPreprocessingEntry(
-                "react_render_mapbuffer",
-                new Pair("../ReactCommon/react/renderer/mapbuffer/", "react/renderer/mapbuffer/")
-            ),
-            new PrefabPreprocessingEntry(
-                "yoga",
-                [
-                    new Pair("../ReactCommon/yoga/", ""),
-                    new Pair("src/main/jni/first-party/yogajni/jni", "")
-                ]
-            ),
-            new PrefabPreprocessingEntry(
-                "folly_runtime",
-                [
-                    new Pair(new File(buildDir, "third-party-ndk/fmt/include/").absolutePath, ""),
-                    new Pair(new File(buildDir, "third-party-ndk/folly/").absolutePath, ""),
-                    new Pair(new File(buildDir, "third-party-ndk/boost/boost_1_83_0/").absolutePath, ""),
-                    new Pair(new File(buildDir, "third-party-ndk/double-conversion/").absolutePath, ""),
-                ]
-            ),
-            new PrefabPreprocessingEntry(
-                "react_nativemodule_core",
-                [
-                    new Pair(new File(buildDir, "third-party-ndk/boost/boost_1_83_0/").absolutePath, ""),
-                    new Pair(new File(buildDir, "third-party-ndk/double-conversion/").absolutePath, ""),
-                    new Pair(new File(buildDir, "third-party-ndk/fmt/include/").absolutePath, ""),
-                    new Pair(new File(buildDir, "third-party-ndk/folly/").absolutePath, ""),
-                    new Pair(new File(buildDir, "third-party-ndk/glog/exported/").absolutePath, ""),
-                    new Pair("../ReactCommon/butter/", "butter/"),
-                    new Pair("../ReactCommon/callinvoker/", ""),
-                    new Pair("../ReactCommon/cxxreact/", "cxxreact/"),
-                    new Pair("../ReactCommon/react/bridging/", "react/bridging/"),
-                    new Pair("../ReactCommon/react/config/", "react/config/"),
-                    new Pair("../ReactCommon/react/nativemodule/core/", ""),
-                    new Pair("../ReactCommon/react/nativemodule/core/platform/android/", ""),
-                    new Pair("../ReactCommon/react/renderer/componentregistry/", "react/renderer/componentregistry/"),
-                    new Pair("../ReactCommon/react/renderer/components/root/", "react/renderer/components/root/"),
-                    new Pair("../ReactCommon/react/renderer/core/", "react/renderer/core/"),
-                    new Pair("../ReactCommon/react/renderer/debug/", "react/renderer/debug/"),
-                    new Pair("../ReactCommon/react/renderer/leakchecker/", "react/renderer/leakchecker/"),
-                    new Pair("../ReactCommon/react/renderer/mapbuffer/", "react/renderer/mapbuffer/"),
-                    new Pair("../ReactCommon/react/renderer/mounting/", "react/renderer/mounting/"),
-                    new Pair("../ReactCommon/react/renderer/runtimescheduler/", "react/renderer/runtimescheduler/"),
-                    new Pair("../ReactCommon/react/renderer/scheduler/", "react/renderer/scheduler/"),
-                    new Pair("../ReactCommon/react/renderer/telemetry/", "react/renderer/telemetry/"),
-                    new Pair("../ReactCommon/react/renderer/uimanager/", "react/renderer/uimanager/"),
-                    new Pair("../ReactCommon/react/debug/", "react/debug/"),
-                    new Pair("../ReactCommon/react/utils/", "react/utils/"),
-                    new Pair("src/main/jni/react/jni", "react/jni/"),
-                ]
-            ),
-            new PrefabPreprocessingEntry(
-                    "react_utils",
-                    new Pair("../ReactCommon/react/utils/", "react/utils/"),
-            ),
-            new PrefabPreprocessingEntry(
-                "react_render_imagemanager",
-                [
-                    new Pair("../ReactCommon/react/renderer/imagemanager/", "react/renderer/imagemanager/"),
-                    new Pair("../ReactCommon/react/renderer/imagemanager/platform/cxx/", ""),
-                ]
-            ),
-            new PrefabPreprocessingEntry(
-                "rrc_image",
-                new Pair("../ReactCommon/react/renderer/components/image/", "react/renderer/components/image/")
-            ),
-            // These prefab targets are used by Expo & Reanimated
-            new PrefabPreprocessingEntry(
-                "hermes_executor",
-                // "hermes_executor" is statically linking against "hermes_executor_common"
-                // and "hermes_inspector_modern". Here we expose only the headers that we know are needed.
-                new Pair("../ReactCommon/hermes/inspector-modern/", "hermes/inspector-modern/")
-            ),
-            new PrefabPreprocessingEntry(
-                "jscexecutor",
-                // "jscexecutor" is statically linking against "jscruntime"
-                // Here we expose only the headers that we know are needed.
-                new Pair("../ReactCommon/jsc/", "jsc/")
-            ),
-            new PrefabPreprocessingEntry(
-                "react_render_uimanager",
-                new Pair("../ReactCommon/react/renderer/uimanager/", "react/renderer/uimanager/"),
-            ),
-            new PrefabPreprocessingEntry(
-                "react_render_scheduler",
-                new Pair("../ReactCommon/react/renderer/scheduler/", "react/renderer/scheduler/"),
-            ),
-            new PrefabPreprocessingEntry(
-                "react_render_mounting",
-                new Pair("../ReactCommon/react/renderer/mounting/", "react/renderer/mounting/"),
-            ),
-            new PrefabPreprocessingEntry(
-                "reactnativejni",
-                [
-                    new Pair("src/main/jni/react/jni", "react/jni/"),
-                    new Pair("../ReactCommon/cxxreact/", "cxxreact/"),
-                ]
-            ),
-            new PrefabPreprocessingEntry(
-                "jsinspector",
-                new Pair("../ReactCommon/jsinspector-modern/", "jsinspector-modern/"),
-            ),
-        ]
+            [
+                    new PrefabPreprocessingEntry(
+                            "react_render_debug",
+                            new Pair("../ReactCommon/react/renderer/debug/", "react/renderer/debug/")
+                    ),
+                    new PrefabPreprocessingEntry(
+                            "turbomodulejsijni",
+                            new Pair("src/main/jni/react/turbomodule", "")
+                    ),
+                    new PrefabPreprocessingEntry(
+                            "runtimeexecutor",
+                            new Pair("../ReactCommon/runtimeexecutor/", "")
+                    ),
+                    new PrefabPreprocessingEntry(
+                            "react_codegen_rncore",
+                            new Pair(new File(buildDir, "generated/source/codegen/jni/").absolutePath, "")
+                    ),
+                    new PrefabPreprocessingEntry(
+                            "react_debug",
+                            new Pair("../ReactCommon/react/debug/", "react/debug/")
+                    ),
+                    new PrefabPreprocessingEntry(
+                            "react_render_componentregistry",
+                            new Pair("../ReactCommon/react/renderer/componentregistry/", "react/renderer/componentregistry/")
+                    ),
+                    new PrefabPreprocessingEntry(
+                            "react_newarchdefaults",
+                            new Pair("src/main/jni/react/newarchdefaults", "")
+                    ),
+                    new PrefabPreprocessingEntry(
+                            "react_render_animations",
+                            new Pair("../ReactCommon/react/renderer/animations/", "react/renderer/animations/")
+                    ),
+                    new PrefabPreprocessingEntry(
+                            "react_render_core",
+                            new Pair("../ReactCommon/react/renderer/core/", "react/renderer/core/")
+                    ),
+                    new PrefabPreprocessingEntry(
+                            "react_render_graphics",
+                            [
+                                    new Pair("../ReactCommon/react/renderer/graphics/", "react/renderer/graphics/"),
+                                    new Pair("../ReactCommon/react/renderer/graphics/platform/android/", ""),
+                            ]
+                    ),
+                    new PrefabPreprocessingEntry(
+                            "rrc_root",
+                            new Pair("../ReactCommon/react/renderer/components/root/", "react/renderer/components/root/")
+                    ),
+                    new PrefabPreprocessingEntry(
+                            "rrc_view",
+                            [
+                                    new Pair("../ReactCommon/react/renderer/components/view/", "react/renderer/components/view/"),
+                                    new Pair("../ReactCommon/react/renderer/components/view/platform/android/", ""),
+                            ]
+                    ),
+                    new PrefabPreprocessingEntry(
+                            "rrc_legacyviewmanagerinterop",
+                            new Pair("../ReactCommon/react/renderer/components/legacyviewmanagerinterop/", "react/renderer/components/legacyviewmanagerinterop/")
+                    ),
+                    new PrefabPreprocessingEntry(
+                            "jsi",
+                            new Pair("../ReactCommon/jsi/", "")
+                    ),
+                    new PrefabPreprocessingEntry(
+                            "glog",
+                            new Pair(new File(buildDir, "third-party-ndk/glog/exported/").absolutePath, "")
+                    ),
+                    new PrefabPreprocessingEntry(
+                            "fabricjni",
+                            new Pair("src/main/jni/react/fabric", "react/fabric/")
+                    ),
+                    new PrefabPreprocessingEntry(
+                            "react_render_mapbuffer",
+                            new Pair("../ReactCommon/react/renderer/mapbuffer/", "react/renderer/mapbuffer/")
+                    ),
+                    new PrefabPreprocessingEntry(
+                            "yoga",
+                            [
+                                    new Pair("../ReactCommon/yoga/", ""),
+                                    new Pair("src/main/jni/first-party/yogajni/jni", "")
+                            ]
+                    ),
+                    new PrefabPreprocessingEntry(
+                            "folly_runtime",
+                            [
+                                    new Pair(new File(buildDir, "third-party-ndk/fmt/include/").absolutePath, ""),
+                                    new Pair(new File(buildDir, "third-party-ndk/folly/").absolutePath, ""),
+                                    new Pair(new File(buildDir, "third-party-ndk/boost/boost_1_83_0/").absolutePath, ""),
+                                    new Pair(new File(buildDir, "third-party-ndk/double-conversion/").absolutePath, ""),
+                            ]
+                    ),
+                    new PrefabPreprocessingEntry(
+                            "react_nativemodule_core",
+                            [
+                                    new Pair(new File(buildDir, "third-party-ndk/boost/boost_1_83_0/").absolutePath, ""),
+                                    new Pair(new File(buildDir, "third-party-ndk/double-conversion/").absolutePath, ""),
+                                    new Pair(new File(buildDir, "third-party-ndk/fmt/include/").absolutePath, ""),
+                                    new Pair(new File(buildDir, "third-party-ndk/folly/").absolutePath, ""),
+                                    new Pair(new File(buildDir, "third-party-ndk/glog/exported/").absolutePath, ""),
+                                    new Pair("../ReactCommon/butter/", "butter/"),
+                                    new Pair("../ReactCommon/callinvoker/", ""),
+                                    new Pair("../ReactCommon/cxxreact/", "cxxreact/"),
+                                    new Pair("../ReactCommon/react/bridging/", "react/bridging/"),
+                                    new Pair("../ReactCommon/react/config/", "react/config/"),
+                                    new Pair("../ReactCommon/react/nativemodule/core/", ""),
+                                    new Pair("../ReactCommon/react/nativemodule/core/platform/android/", ""),
+                                    new Pair("../ReactCommon/react/renderer/componentregistry/", "react/renderer/componentregistry/"),
+                                    new Pair("../ReactCommon/react/renderer/components/root/", "react/renderer/components/root/"),
+                                    new Pair("../ReactCommon/react/renderer/core/", "react/renderer/core/"),
+                                    new Pair("../ReactCommon/react/renderer/debug/", "react/renderer/debug/"),
+                                    new Pair("../ReactCommon/react/renderer/leakchecker/", "react/renderer/leakchecker/"),
+                                    new Pair("../ReactCommon/react/renderer/mapbuffer/", "react/renderer/mapbuffer/"),
+                                    new Pair("../ReactCommon/react/renderer/mounting/", "react/renderer/mounting/"),
+                                    new Pair("../ReactCommon/react/renderer/runtimescheduler/", "react/renderer/runtimescheduler/"),
+                                    new Pair("../ReactCommon/react/renderer/scheduler/", "react/renderer/scheduler/"),
+                                    new Pair("../ReactCommon/react/renderer/telemetry/", "react/renderer/telemetry/"),
+                                    new Pair("../ReactCommon/react/renderer/uimanager/", "react/renderer/uimanager/"),
+                                    new Pair("../ReactCommon/react/debug/", "react/debug/"),
+                                    new Pair("../ReactCommon/react/utils/", "react/utils/"),
+                                    new Pair("src/main/jni/react/jni", "react/jni/"),
+                            ]
+                    ),
+                    new PrefabPreprocessingEntry(
+                            "react_utils",
+                            new Pair("../ReactCommon/react/utils/", "react/utils/"),
+                    ),
+                    new PrefabPreprocessingEntry(
+                            "react_render_imagemanager",
+                            [
+                                    new Pair("../ReactCommon/react/renderer/imagemanager/", "react/renderer/imagemanager/"),
+                                    new Pair("../ReactCommon/react/renderer/imagemanager/platform/cxx/", ""),
+                            ]
+                    ),
+                    new PrefabPreprocessingEntry(
+                            "rrc_image",
+                            new Pair("../ReactCommon/react/renderer/components/image/", "react/renderer/components/image/")
+                    ),
+                    // These prefab targets are used by Expo & Reanimated
+                    new PrefabPreprocessingEntry(
+                            "hermes_executor",
+                            // "hermes_executor" is statically linking against "hermes_executor_common"
+                            // and "hermes_inspector_modern". Here we expose only the headers that we know are needed.
+                            new Pair("../ReactCommon/hermes/inspector-modern/", "hermes/inspector-modern/")
+                    ),
+                    new PrefabPreprocessingEntry(
+                            "jscexecutor",
+                            // "jscexecutor" is statically linking against "jscruntime"
+                            // Here we expose only the headers that we know are needed.
+                            new Pair("../ReactCommon/jsc/", "jsc/")
+                    ),
+                    new PrefabPreprocessingEntry(
+                            "react_render_uimanager",
+                            new Pair("../ReactCommon/react/renderer/uimanager/", "react/renderer/uimanager/"),
+                    ),
+                    new PrefabPreprocessingEntry(
+                            "react_render_scheduler",
+                            new Pair("../ReactCommon/react/renderer/scheduler/", "react/renderer/scheduler/"),
+                    ),
+                    new PrefabPreprocessingEntry(
+                            "react_render_mounting",
+                            new Pair("../ReactCommon/react/renderer/mounting/", "react/renderer/mounting/"),
+                    ),
+                    new PrefabPreprocessingEntry(
+                            "reactnativejni",
+                            [
+                                    new Pair("src/main/jni/react/jni", "react/jni/"),
+                                    new Pair("../ReactCommon/cxxreact/", "cxxreact/"),
+                            ]
+                    ),
+                    new PrefabPreprocessingEntry(
+                            "jsinspector",
+                            new Pair("../ReactCommon/jsinspector-modern/", "jsinspector-modern/"),
+                    ),
+            ]
     )
     it.outputDir.set(prefabHeadersDir)
 }
@@ -360,11 +360,12 @@ task downloadGtest(dependsOn: createNativeDepsDirectories, type: Download) {
 
 task prepareGtest(dependsOn: dependenciesPath ? [] : [downloadGtest], type: Copy) {
     from(dependenciesPath ?: tarTree(downloadGtest.dest))
-    eachFile { fname -> {
-        fname.path = (fname.path - "googletest-release-${GTEST_VERSION}/")
-     }
+    eachFile { fname ->
+        {
+            fname.path = (fname.path - "googletest-release-${GTEST_VERSION}/")
+        }
     }
-    into(new File(thirdPartyNdkDir,"googletest"))
+    into(new File(thirdPartyNdkDir, "googletest"))
 }
 
 // Prepare glog sources to be compiled, this task will perform steps that normally should've been
@@ -389,14 +390,21 @@ task prepareKotlinBuildScriptModel {
 
 // As ReactAndroid builds from source, the codegen needs to be built before it can be invoked.
 // This is not the case for users of React Native, as we ship a compiled version of the codegen.
+
 final def buildCodegenCLITask = tasks.register('buildCodegenCLI', BuildCodegenCLITask) {
+    println("ReactAndroid buildCodegenCLITask 执行")
+    println("ReactAndroid rootDir: ${rootDir}")
     it.codegenDir.set(file("$rootDir/node_modules/@react-native/codegen"))
+    println("ReactAndroid cpdegenDir: ${it.codegenDir.get()}")
     it.bashWindowsHome.set(project.findProperty("react.internal.windowsBashPath"))
+
+    println("ReactAndroid rootProject.name: ${rootProject.name}")
     it.onlyIf {
         // For build from source scenario, we don't need to build the codegen at all.
         rootProject.name != "react-native-build-from-source"
     }
 }
+
 
 /**
  * Finds the path of the installed npm package with the given name using Node's
@@ -521,54 +529,54 @@ android {
         externalNativeBuild {
             cmake {
                 arguments "-DREACT_COMMON_DIR=${reactNativeRootDir}/ReactCommon",
-                    "-DREACT_ANDROID_DIR=$projectDir",
-                    "-DREACT_BUILD_DIR=$buildDir",
-                    "-DANDROID_STL=c++_shared",
-                    "-DANDROID_TOOLCHAIN=clang",
-                    "-DANDROID_PLATFORM=android-21",
-                    // Due to https://github.com/android/ndk/issues/1693 we're losing Android
-                    // specific compilation flags. This can be removed once we moved to NDK 25/26
-                    "-DANDROID_USE_LEGACY_TOOLCHAIN_FILE=ON"
+                        "-DREACT_ANDROID_DIR=$projectDir",
+                        "-DREACT_BUILD_DIR=$buildDir",
+                        "-DANDROID_STL=c++_shared",
+                        "-DANDROID_TOOLCHAIN=clang",
+                        "-DANDROID_PLATFORM=android-21",
+                        // Due to https://github.com/android/ndk/issues/1693 we're losing Android
+                        // specific compilation flags. This can be removed once we moved to NDK 25/26
+                        "-DANDROID_USE_LEGACY_TOOLCHAIN_FILE=ON"
 
                 targets "jsijniprofiler",
-                    "reactnativeblob",
-                    "reactperfloggerjni",
-                    "bridgeless",
-                    "rninstance",
-                    "hermesinstancejni",
-                    "uimanagerjni",
-                    "jscinstance",
-                    // prefab targets
-                    "reactnativejni",
-                    "react_render_debug",
-                    "turbomodulejsijni",
-                    "runtimeexecutor",
-                    "react_codegen_rncore",
-                    "react_debug",
-                    "react_utils",
-                    "react_render_componentregistry",
-                    "react_newarchdefaults",
-                    "react_render_animations",
-                    "react_render_core",
-                    "react_render_graphics",
-                    "rrc_image",
-                    "rrc_root",
-                    "rrc_view",
-                    "rrc_legacyviewmanagerinterop",
-                    "jsi",
-                    "glog",
-                    "fabricjni",
-                    "react_render_mapbuffer",
-                    "yoga",
-                    "folly_runtime",
-                    "react_nativemodule_core",
-                    "react_render_imagemanager",
-                    "react_render_uimanager",
-                    "react_render_scheduler",
-                    "react_render_mounting",
-                    "hermes_executor",
-                    "jscexecutor",
-                    "jsinspector"
+                        "reactnativeblob",
+                        "reactperfloggerjni",
+                        "bridgeless",
+                        "rninstance",
+                        "hermesinstancejni",
+                        "uimanagerjni",
+                        "jscinstance",
+                        // prefab targets
+                        "reactnativejni",
+                        "react_render_debug",
+                        "turbomodulejsijni",
+                        "runtimeexecutor",
+                        "react_codegen_rncore",
+                        "react_debug",
+                        "react_utils",
+                        "react_render_componentregistry",
+                        "react_newarchdefaults",
+                        "react_render_animations",
+                        "react_render_core",
+                        "react_render_graphics",
+                        "rrc_image",
+                        "rrc_root",
+                        "rrc_view",
+                        "rrc_legacyviewmanagerinterop",
+                        "jsi",
+                        "glog",
+                        "fabricjni",
+                        "react_render_mapbuffer",
+                        "yoga",
+                        "folly_runtime",
+                        "react_nativemodule_core",
+                        "react_render_imagemanager",
+                        "react_render_uimanager",
+                        "react_render_scheduler",
+                        "react_render_mounting",
+                        "hermes_executor",
+                        "jscexecutor",
+                        "jsinspector"
             }
         }
         ndk {
@@ -794,13 +802,18 @@ react {
     jsRootDir = file("../Libraries")
 }
 
+println("rootProject.name: ${rootProject.name}")
 // For build from source, we need to override the privateReact extension.
 // This is neeeded as the build-from-source won't have a com.android.application
 // module to apply the plugin to, so it's codegenDir and reactNativeDir won't be evaluated.
 if (rootProject.name == "react-native-build-from-source") {
     privateReact {
-        codegenDir = file("$rootDir/../@react-native/codegen")
+        def parent = rootDir.parentFile.parent
+        println("ReactAndroid parent: ${parent}")
+        codegenDir = file("$parent/node_modules/@react-native/codegen")
+        println("ReactAndroid codegenDir: ${codegenDir.get()}")
         reactNativeDir = file("$rootDir")
+        println("ReactAndroid reactNativeDir: ${reactNativeDir.get()}")
     }
 }
 
