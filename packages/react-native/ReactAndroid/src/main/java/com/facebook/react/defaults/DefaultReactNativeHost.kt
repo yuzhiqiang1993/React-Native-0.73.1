@@ -28,60 +28,60 @@ protected constructor(
     application: Application,
 ) : ReactNativeHost(application) {
 
-  override fun getReactPackageTurboModuleManagerDelegateBuilder():
-      ReactPackageTurboModuleManagerDelegate.Builder? =
-      if (isNewArchEnabled) {
-        DefaultTurboModuleManagerDelegate.Builder()
-      } else {
-        null
-      }
+    override fun getReactPackageTurboModuleManagerDelegateBuilder():
+            ReactPackageTurboModuleManagerDelegate.Builder? =
+        if (isNewArchEnabled) {
+            DefaultTurboModuleManagerDelegate.Builder()
+        } else {
+            null
+        }
 
-  override fun getJSIModulePackage(): JSIModulePackage? =
-      if (isNewArchEnabled) {
-        DefaultJSIModulePackage(this)
-      } else {
-        null
-      }
+    override fun getJSIModulePackage(): JSIModulePackage? =
+        if (isNewArchEnabled) {
+            DefaultJSIModulePackage(this)
+        } else {
+            null
+        }
 
-  override fun getJSEngineResolutionAlgorithm(): JSEngineResolutionAlgorithm? =
-      when (isHermesEnabled) {
-        true -> JSEngineResolutionAlgorithm.HERMES
-        false -> JSEngineResolutionAlgorithm.JSC
-        null -> null
-      }
+    override fun getJSEngineResolutionAlgorithm(): JSEngineResolutionAlgorithm? =
+        when (isHermesEnabled) {
+            true -> JSEngineResolutionAlgorithm.HERMES
+            false -> JSEngineResolutionAlgorithm.JSC
+            null -> null
+        }
 
-  /**
-   * Returns whether the user wants to use the New Architecture or not.
-   *
-   * If true, we will load the default JSI Module Package and TurboModuleManagerDelegate needed to
-   * enable the New Architecture
-   *
-   * If false, the app will not attempt to load the New Architecture modules.
-   */
-  protected open val isNewArchEnabled: Boolean
-    get() = false
+    /**
+     * Returns whether the user wants to use the New Architecture or not.
+     *
+     * If true, we will load the default JSI Module Package and TurboModuleManagerDelegate needed to
+     * enable the New Architecture
+     *
+     * If false, the app will not attempt to load the New Architecture modules.
+     */
+    protected open val isNewArchEnabled: Boolean
+        get() = false
 
-  /**
-   * Returns whether the user wants to use Hermes.
-   *
-   * If true, the app will load the Hermes engine, and fail if not found. If false, the app will
-   * load the JSC engine, and fail if not found. If null, the app will attempt to load JSC first and
-   * fallback to Hermes if not found.
-   */
-  protected open val isHermesEnabled: Boolean?
-    get() = null
+    /**
+     * Returns whether the user wants to use Hermes.
+     *
+     * If true, the app will load the Hermes engine, and fail if not found. If false, the app will
+     * load the JSC engine, and fail if not found. If null, the app will attempt to load JSC first and
+     * fallback to Hermes if not found.
+     */
+    protected open val isHermesEnabled: Boolean?
+        get() = null
 
-  /**
-   * Converts this [ReactNativeHost] (bridge-mode) to a [ReactHost] (bridgeless-mode).
-   *
-   * @param context the Android [Context] to use for creating the [ReactHost]
-   */
-  fun toReactHost(context: Context): ReactHost =
-      DefaultReactHost.getDefaultReactHost(
-          context,
-          packages,
-          jsMainModuleName,
-          bundleAssetName ?: "index",
-          isHermesEnabled ?: true,
-      )
+    /**
+     * Converts this [ReactNativeHost] (bridge-mode) to a [ReactHost] (bridgeless-mode).
+     *
+     * @param context the Android [Context] to use for creating the [ReactHost]
+     */
+    fun toReactHost(context: Context): ReactHost =
+        DefaultReactHost.getDefaultReactHost(
+            context,
+            packages,
+            jsMainModuleName,
+            bundleAssetName ?: "index",
+            isHermesEnabled ?: true,
+        )
 }
